@@ -1,0 +1,15 @@
+<a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user" aria-expanded="false">
+    <div class="d-lg-inline-block">
+        <button class="btn btn-primary dropdown-toggle me-1">
+            {{ app.request.locale }}
+        </button>
+    </div>
+</a>
+<div class="dropdown-menu dropdown-menu-end">
+    {% for locale in locales %}
+        <a class="dropdown-item" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': locale})) }}"
+                {% if locale == app.request.locale %} active {% endif %}>
+          {{ locale }}
+        </a>
+    {% endfor %}
+</div>

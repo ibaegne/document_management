@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ 'Sign up'|trans([], 'security') }}{% endblock %}
+
+{% block main %}
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="{{ asset('assets/images/common.jpg') }}" alt="sing up image"></figure>
+                    <a href="{{ path('app_register') }}" class="signup-image-link">
+                        {{ 'Create an account'|trans([], 'security') }}
+                    </a>
+                </div>
+                <div class="signin-form">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <h1 class="form-title">{{ 'Sign up'|trans([], 'security') }}</h1>
+                    <form method="POST" class="register-form" id="login-form">
+                        {% if app.user %}
+                            <div class="mb-3">
+                                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">{{ 'Logout'|trans([], 'security') }}</a>
+                            </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="inputEmail"><i class="zmdi zmdi-email"></i></label>
+                            <input type="email"  value="{{ last_username }}" name="email" id="inputEmail" placeholder="{{ 'Your Email'|trans([], 'security') }}" autocomplete="email" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="inputPassword" autocomplete="current-password" required placeholder="{{ 'Password'|trans([], 'security') }}">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
+                            <label for="remember-me" class="label-agree-term">
+                                <span>
+                                    <span>
+
+                                    </span>
+                                </span>{{ 'Remember me'|trans([], 'security') }}
+                            </label>
+                        </div>
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="{{ 'Log in'|trans([], 'security') }}">
+                        </div>
+                    </form>
+                    <div class="social-login">
+                        <a href="#" class="social-label">{{ 'Forgot your password?'|trans([], 'security') }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

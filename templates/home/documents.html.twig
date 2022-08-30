@@ -1,0 +1,41 @@
+
+{% extends 'app.html.twig' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+ {% block stylesheets %}
+     {{ parent() }}
+     {{ encore_entry_link_tags('my-documents') }}
+ {% endblock %}
+
+{% block main %}
+    {% include 'common/_page_title.html.twig' with {'title': title} %}
+    <div id="documents">
+        <div class="alert alert-dismissible fade" v-if="message != ''" :class="alertClass">
+            {% verbatim %}{{ message }}{% endverbatim %}
+            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <section id="card-caps">
+            <div class="row" v-if="documents.length > 0">
+                <document inline-template v-for="document in documents"
+                          :document="document"
+                >
+                    {% include 'document/_index.html.twig' %}
+                </document>
+            </div>
+            <div class="card" v-else>
+                <div class="card-header" id="headingFour" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" role="button">
+                    <span class="collapsed  collapse-title"> Aucun document trouvé </span>
+                </div>
+            </div>
+        </section>
+        <input type="hidden" ref="path" value="{{ path }}">
+    </div>
+{% endblock %}
+
+ {% block javascripts %}
+     {{ encore_entry_script_tags('my-documents') }}
+ {% endblock %}
+

@@ -1,0 +1,23 @@
+<div class="col-xl-3 col-md-6 col-sm-12">
+    <div class="card">
+        <div class="card-content">
+            <img class="card-img img-fluid" :src="pathCardImg" :alt="document.name">
+            <div class="card-img-overlay overlay-dark d-flex justify-content-between flex-column">
+                <div class="overlay-content">
+                    <h4 class="card-title mb-50">
+                        <a href="#">{% verbatim %}{{ document.name }}{% endverbatim %}</a>
+                    </h4>
+                </div>
+                <div class="overlay-status text-right">
+                    <document-action inline-template
+                                     :document="document"
+                                     :user-id="{{ app.user.id }}"
+                                     :locale="'{{ app.request.locale }}'"
+                    >
+                        {% include 'document/_action.html.twig' %}
+                    </document-action>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="modal fade text-left"  :class="{ show: btnShare }"
+     tabindex="-1" :style="{display: btnShare ? 'block' : 'none'}" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ 'app.share'|trans }}</h5>
+                <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close" @click="sendValueBtnShare()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" v-if="showMessageSelectUser">{{ 'app.selecting_people'|trans }}</div>
+                <h4 class="card-title">{% verbatim %}{{ document.name + '.' + document.extension }} {% endverbatim %}</h4>
+                <multiselect
+                        v-model="value"
+                        :options="users"
+                        :multiple="true"
+                        :close-on-select="false"
+                        :clear-on-select="true"
+                        :preserve-search="true"
+                        select-label="{{ 'app.press_enter_to_select'|trans }}"
+                        placeholder="{{ 'app.selecting_people'|trans }}"
+                        deselect-label="{{ 'app.press_enter_to_delete'|trans }}"
+                        label="name"
+                        track-by="name"
+                        :preselect-first="true"
+                        @search-change="usersFind"
+                        @select="onSelect"
+                >
+                    <template slot="selection" slot-scope="{ values, search, isOpen }">
+                        <span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">
+                            {% verbatim %}{{ values.length }} {% endverbatim %} {{ 'app.selected_person'|trans }}
+                        </span>
+                    </template>
+                    <span slot="noOptions">{{ 'app.please_enter_3_or_more_characters'|trans }}</span>
+                    <span slot="noResult">
+                      {% verbatim %}{{ getNotResultMessage() }} {% endverbatim %}
+                    </span>
+                </multiselect>
+                <div class="input-group mt-3" v-if="value != null">
+                    <access inline-template :access-value="access" @send-change-access-value="changeAccessValue">
+                        {% include 'document/_access.html.twig' %}
+                    </access>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal" @click="sendValueBtnShare()">
+                    <i class="bx bx-x d-block d-sm-none"></i>
+                    <span class="d-none d-sm-block">{{ 'app.cancel'|trans }}</span>
+                </button>
+                <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                    <i class="bx bx-check d-block d-sm-none"></i>
+                    <span class="d-none d-sm-block" @click="sendShare()">{{ 'app.send'|trans }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

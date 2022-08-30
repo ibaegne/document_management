@@ -1,0 +1,86 @@
+<div class="btn-group mb-1">
+    <div class="dropdown">
+        <button class="btn btn-outline-white btn-sm dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           {{ 'app.actions'|trans }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item icon-left" href="#" @click.prevent="onEditBtn()" v-if="canEdit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+                {{ 'app.edit'|trans }}
+            </a>
+            <a href="#" class="dropdown-item icon icon-left" @click.prevent="onShareBtn()" v-if=" canRemoveOrShared">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+                {{ 'app.share'|trans }}
+            </a>
+            <a class="dropdown-item icon icon-left" :href="linkDownload" target="_blank" v-if="canDownload">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+               {{ 'app.download'|trans }}
+            </a>
+            <a class="dropdown-item icon-left" href="#" @click.prevent="onRemoveBtn()" v-if="canRemoveOrShared">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+                {{ 'app.delete'|trans }}
+            </a>
+            <a class="dropdown-item icon-left" href="#" @click.prevent="onChangeAccessBtn()"
+               v-if="canRemoveOrShared && isShared">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+               {{ 'app.modify_the_sharing_rights'|trans }}
+            </a>
+        </div>
+    </div>
+    <document-action-share inline-template
+                           :btn-share="shareBtn"
+                           :document="document"
+                           :locale=locale
+                           :no-items-found-message="'{{ 'app.no_items_found'|trans }}'"
+                           @change-value-btn-share="onShareBtn"
+    >
+        {% include  'document/_action_share.html.twig' %}
+    </document-action-share>
+    <document-action-remove inline-template
+                           :btn-remove="removeBtn"
+                           :document="document"
+                            :locale=locale
+                           @change-value-btn-remove="onRemoveBtn"
+    >
+        {% include  'document/_action_remove.html.twig' %}
+    </document-action-remove>
+
+    <document-action-edit inline-template
+                            :btn-edit="editBtn"
+                            :document="document"
+                            :locale=locale
+                            :new-file-message="'{{ 'app.upload_the_new_file_here'|trans }}'"
+                            @change-value-btn-edit="onEditBtn()"
+    >
+        {% include  'document/_action_edit.html.twig' %}
+    </document-action-edit>
+
+    <document-action-change-access inline-template
+                          :btn-change-access="changeAccessBtn"
+                          :document="document"
+                          :locale=locale
+                          :data=documentShared
+                          @change-value-btn-change-access="onChangeAccessBtn()"
+    >
+        {% include  'document/_action_change_access.html.twig' %}
+    </document-action-change-access>
+</div>

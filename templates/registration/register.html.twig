@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block main %}
+    <section class="signup">
+        <div class="container">
+            {% include (registrationForm is defined) ? 'registration/_form.html.twig' : 'registration/_register_done.html.twig' %}
+        </div>
+    </section>
+{% endblock %}

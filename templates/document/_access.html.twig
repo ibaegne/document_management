@@ -1,0 +1,19 @@
+<div>
+    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+        <span v-if="accessValue == 1"> {{ 'app.right_read'|trans }}</span>
+        <span v-else> {{ 'app.right_editor'|trans }}</span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>
+            <a class="dropdown-item" href="#" @click="onChangeValue(1)">
+                {{ 'app.right_read'|trans }}
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="#" @click="onChangeValue(2)">
+                {{ 'app.right_editor'|trans }}
+            </a>
+        </li>
+    </ul>
+</div>
