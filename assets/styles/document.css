@@ -1,0 +1,8 @@
+
+.btn.btn-outline-white:hover.dropdown-toggle:after {
+    color:#333;
+}
+h4.card-title a {
+    color: #fff;
+    text-decoration: underline;
+}
