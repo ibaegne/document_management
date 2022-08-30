@@ -1,0 +1,39 @@
+app:
+  my_documents: Mes documents
+  shared_with_me: Partagés avec moi
+  importing_documents: Importer des docmuents
+  logout: Déconnexion
+  hi: Bonjour
+  actions: Actions
+  edit: Modifier
+  share: Partager
+  download: Télécharger
+  delete: Supprimer
+  cancel: Annuler
+  confirm: Confirmer
+  send: Envoyer
+  right_editor: Editeur
+  right_read: Lecteur
+  selecting_people: Sélectionner des personnes
+  press_enter_to_select: Appuyez sur la touche Entrée pour sélectionner
+  selected_person: Personne(s) selectionée(s)
+  please_enter_3_or_more_characters: Veuillez saisir 3 caractères ou plus.
+  no_items_found: Oups ! Aucun élément trouvé. Pensez à modifier la requête de recherche.
+  upload_the_new_file_here: Déposez le nouveau fichier ici
+  back_to_list: Retour à la liste
+  the_document_has_been_imported: Le document a bien été importé
+  modified_document: Document modifié
+  the_document_has_been_deleted: Le document a bien été supprimé.
+  the_file_to_import_is_mandatory: Le fichier à importer est obligatoire.
+  you_already_added_a_document_with_this_name: Vous avez déjà ajouté un document avec ce nom.
+  enter_the_name_of_the_document_to_be_deleted: Renseigner le nom du document à supprimer.
+  the_data_sent_is_not_correct: Les données envoyées sont incorectes.
+  the_document_does_not_exist: Le document %name% n'existe pas.
+  the_document_to_share_does_not_exist: Le document à partager n'existe pas.
+  the_user_does_not_exist: L'utilisateur %name% n'existe pas.
+  the_right_does_not_exist: Le droit %right% n'existe pas
+  change_rights: Modifier les droits
+  modify_the_sharing_rights: Modifier les droits de partage
+  are_you_sure_you_want_to_delete_it: Êtes-vous sûr de vouloir le supprimer?
+  drop_files_here_to_upload: Déposez les fichiers ici pour les télécharger
+

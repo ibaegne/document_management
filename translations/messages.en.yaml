@@ -1,0 +1,41 @@
+app:
+  my_documents: My documents
+  shared_with_me: Shared With Me
+  importing_documents: Importing documents
+  logout: Logout
+  hi: Hi
+  actions: Actions
+  edit: Edit
+  share: Share
+  download: Download
+  confirm: Confirmer
+  delete: Delete
+  cancel: Cancel
+  send: Send
+  right_editor: Editor
+  right_read: Read
+  selecting_people: Selecting people
+  press_enter_to_select: Press Enter to select
+  press_enter_to_delete: Appuyez sur la touche Entrée pour supprimer
+  selected_person: Person(s) selected
+  please_enter_3_or_more_characters: Please enter 3 or more characters.
+  no_items_found: Oops! No items found. Think of modifying the search request.
+  upload_the_new_file_here: Upload the new file here
+  back_to_list: Back to list
+  the_document_has_been_imported: The document has been imported
+  modified_document: Modified document
+  the_document_has_been_deleted: The document has been deleted.
+  the_file_to_import_is_mandatory: The file to import is mandatory.
+  you_already_added_a_document_with_this_name: You already added a document with this name.
+  enter_the_name_of_the_document_to_be_deleted: Enter the name of the document to be deleted.
+  the_data_sent_is_not_correct: The data sent is not correct.
+  the_document_does_not_exist: The document %name% does not exist.
+  the_document_to_share_does_not_exist: The document to share does not exist.
+  the_user_does_not_exist: The user %name% does not exist
+  the_right_does_not_exist: The right %right% does not exist
+  change_rights: Change rights
+  modify_the_sharing_rights: Modify the sharing rights
+  are_you_sure_you_want_to_delete_it: Are you sure you want to delete it
+  drop_files_here_to_upload: Drop files here to upload
+
+
