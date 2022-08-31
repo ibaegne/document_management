@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 /**
@@ -70,9 +72,28 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/verify/email", name="verify_email")
      */
-    public function verifyUserEmail(Request $request): Response
+    public function verifyUserEmail(
+        Request $request,
+        UserRepository $userRepository,
+        TranslatorInterface $translator
+    ): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $id = $request->get('param'); // retrieve the user id from the url
+        // Verify the user id exists and is not null
+        if (null === $id) {
+            $this->addFlash('error', $translator->trans('Account not exist'));
+            return $this->redirectToRoute('app_login');
+        }
+
+        $user = $userRepository->find($id);
+
+        // Ensure the user exists in persistence
+        if (null === $user) {
+            $this->addFlash('error', $translator->trans('Account not exist'));
+            return $this->redirectToRoute('app_login');
+        }
+
 
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
