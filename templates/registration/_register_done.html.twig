@@ -6,9 +6,9 @@
     <hr>
     <p class="mb-0">
         Si vous n'aviez reçu aucun email dans votre courrier indésirable, nous vous invitons à cliquer sur le bouton
-        <a href="#" class="signup-image-link">Renvoyer un email de confirmation</a>
+        <a href="{{ path('app_verify_email') }}" class="signup-image-link">Renvoyer un email de confirmation</a>
     </p>
 </div>
 <div>
-    <a href="{{ path('app_login') }}" class="signup-image-link">Se connecter</a>
+    <a href="{{ path('app_login') }}" class="signup-image-link">{{ 'Log in'|trans }}</a>
 </div>
