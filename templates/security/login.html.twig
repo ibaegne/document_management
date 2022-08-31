@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
-
-{% block title %}{{ 'Sign up'|trans([], 'security') }}{% endblock %}
+{% title = 'Log in'|trans([], 'security') %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block main %}
     <section class="sign-in">
@@ -16,7 +16,7 @@
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
-                    <h1 class="form-title">{{ 'Sign up'|trans([], 'security') }}</h1>
+                    <h1 class="form-title">{{ title }}</h1>
                     <form method="POST" class="register-form" id="login-form">
                         {% if app.user %}
                             <div class="mb-3">
