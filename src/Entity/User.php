@@ -55,7 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private bool $isEnabled;
+    private bool $isEnabled = true;
 
     /**
      * @ORM\OneToMany(targetEntity=Document::class, mappedBy="owner")
