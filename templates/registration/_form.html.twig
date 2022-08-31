@@ -3,7 +3,7 @@
         {% for flash_error in app.flashes('verify_email_error') %}
             <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
         {% endfor %}
-        <h1 class="form-title">{{ 'Sign up'|trans([], 'security') }}</h1>
+        <h1 class="form-title">{{ title }}</h1>
         {{ form_start(registrationForm, { 'attr' : { 'class': 'register-form' } }) }}
         <div class="form-group">
             <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
