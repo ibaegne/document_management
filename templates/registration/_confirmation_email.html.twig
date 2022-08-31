@@ -2,7 +2,7 @@
 
 <p>
     {{ 'Please confirm your email address by clicking the following link'|trans([], 'security') }}: <br><br>
-    <a href="{{ signedUrl }}">{{ 'Confirm my Email'|trans([], 'security') }}</a>.
+    <a href="{{ signedUrl }}" style="color: red">{{ 'Confirm my Email'|trans([], 'security') }}</a>.
     {{ 'This link will expire in'|trans([], 'security') }} {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
 </p>
 
