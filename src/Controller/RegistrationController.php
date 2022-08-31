@@ -78,26 +78,16 @@ class RegistrationController extends AbstractController
         TranslatorInterface $translator
     ): Response
     {
+        $idUser = $request->get('param');
+        $user = $idUser ? $userRepository->find($idUser): null;
 
-        $id = $request->get('param'); // retrieve the user id from the url
-        // Verify the user id exists and is not null
-        if (null === $id) {
-            $this->addFlash('error', $translator->trans('Account not exist'));
-            return $this->redirectToRoute('app_login');
-        }
-
-        $user = $userRepository->find($id);
-
-        // Ensure the user exists in persistence
         if (null === $user) {
             $this->addFlash('error', $translator->trans('Account not exist'));
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_register');
         }
-
-
-        // validate email confirmation link, sets User::isVerified=true and persists
+        
         try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
+            $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
@@ -107,6 +97,6 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('app_login');
     }
 }
