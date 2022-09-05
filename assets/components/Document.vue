@@ -6,12 +6,16 @@ export default {
   props: ['document'],
   data: function () {
     return {
-
+      extensions: ['docx', 'odt', 'pdf', 'xls', 'xlsx'],
+      dir: '/assets/images/document/'
     }
   },
   computed: {
     pathCardImg() {
-     return `/assets/images/document/${this.document.extension}.png`
+      if(!this.extensions.includes(this.document.extension)) {
+        return `${this.dir}other.png`
+      }
+      return `${this.dir}${this.document.extension}.png`
     }
   },
   components: {
