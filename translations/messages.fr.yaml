@@ -18,7 +18,7 @@ app:
   press_enter_to_select: Appuyez sur la touche Entrée pour sélectionner
   selected_person: Personne(s) selectionée(s)
   please_enter_3_or_more_characters: Veuillez saisir 3 caractères ou plus.
-  no_items_found: Oups ! Aucun élément trouvé. Pensez à modifier la requête de recherche.
+  no_items_found: Utilisateur inexistant, ou qui a déjà accès au document
   upload_the_new_file_here: Déposez le nouveau fichier ici
   back_to_list: Retour à la liste
   the_document_has_been_imported: Le document a bien été importé
