@@ -7,9 +7,10 @@
 </a>
 <div class="dropdown-menu dropdown-menu-end">
     {% for locale in locales %}
-        <a class="dropdown-item" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': locale})) }}"
-                {% if locale == app.request.locale %} active {% endif %}>
-          {{ locale }}
-        </a>
+        {% if locale != app.request.locale %}
+            <a class="dropdown-item" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': locale})) }}">
+                {{ locale }}
+            </a>
+        {% endif %}
     {% endfor %}
 </div>
