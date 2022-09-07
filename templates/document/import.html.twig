@@ -13,7 +13,11 @@
             <div class="card">
                 <div class="card-body">
                     <div id="import-document">
-                        {% include 'common/_dropzone.html.twig' %}
+                        <dropzone :dropzone-options="dropzoneOptions"
+                                  :dict-default-message="'{{ 'app.drop_files_here_to_upload'|trans }}'"
+                                  :dict-file-too-big-message="'{{ 'app.file_is_to_big'|trans }}'"
+                        >
+                        </dropzone>
                         <input type="hidden" ref="path" value="'{{ path('app_document_import') }}'">
                     </div>
                 </div>

@@ -10,7 +10,14 @@
             </div>
             <div class="modal-body">
                 <h4 class="card-title">{% verbatim %}{{ document.name + '.' + document.extension }} {% endverbatim %}</h4>
-                {% include 'common/_dropzone.html.twig' %}
+                <dropzone :dropzone-options="dropzoneOptions"
+                          ref="myVueDropzone"
+                          :deletefile="true"
+                          :dict-default-message="'{{ 'app.drop_files_here_to_upload'|trans }}'"
+                          :dict-file-too-big-message="'{{ 'app.file_is_to_big'|trans }}'"
+                          @send-add-file-success="closeModal"
+                >
+                </dropzone>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" data-bs-dismiss="modal" @click="sendValueBtnEdit()">

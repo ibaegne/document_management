@@ -11,10 +11,6 @@ new Vue({
         }
     },
     components: { 'dropzone': Dropzone },
-    methods: {
-        closeModal(payload) {
-        },
-    },
     mounted() {
        this.dropzoneOptions.url = this.$refs.path.value;
     },
