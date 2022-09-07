@@ -6,12 +6,13 @@ new Vue({
     el: '#documents',
     data: {
         documents: [],
-        message: '',
-        alertClass: ''
+        alertMessage: '',
+        alertClass: '',
+        message: ''
     },
     methods: {
         setDataAlert(message, classNames) {
-            this.message = message;
+            this.alertMessage = message;
             this.alertClass = classNames;
         },
         removeDocument(safeName) {
@@ -31,18 +32,26 @@ new Vue({
             const document = (document) => document.safeName == safeName;
 
             return this.documents.findIndex(document);
-        }
+        },
+        changeMessage()
+        {
+            if (this.documents.length === 0) {
+                this.message = this.$refs.messages.dataset.noDocumentFound;
+            }
+        },
     },
     components: {
         'document': Document
     },
     mounted() {
+        this.message = this.$refs.messages.dataset.loadingInProgress;
         axios.get(`${this.$refs.path.value}`)
             .then((response) => {
                 this.documents = response.data;
+                this.changeMessage();
             })
             .catch(function (error) {
-                this.message = error;
+                this.alertMessage = error;
                 this.alertClass = 'alert-danger show'
             });
         this.$root.$on('send-data-for-alert', (message, classNames) => {
@@ -56,5 +65,6 @@ new Vue({
         this.$root.$on('send-change-document-name-extension', (safeName, newName, extension) => {
             this.changeNameAndExtensionDocument(safeName, newName, extension);
         });
+
     }
 });

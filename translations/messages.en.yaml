@@ -37,5 +37,7 @@ app:
   modify_the_sharing_rights: Modify the sharing rights
   are_you_sure_you_want_to_delete_it: Are you sure you want to delete it
   drop_files_here_to_upload: Drop files here to upload
+  no_document_found: No document found
+  loading_in_progress: loading in progress...
 
 

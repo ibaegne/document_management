@@ -36,4 +36,6 @@ app:
   modify_the_sharing_rights: Modifier les droits de partage
   are_you_sure_you_want_to_delete_it: Êtes-vous sûr de vouloir le supprimer?
   drop_files_here_to_upload: Déposez les fichiers ici pour les télécharger
+  no_document_found: Aucun document trouvé
+  loading_in_progress: chargement en cours...
 

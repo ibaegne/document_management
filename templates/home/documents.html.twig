@@ -11,27 +11,32 @@
 {% block main %}
     {% include 'common/_page_title.html.twig' with {'title': title} %}
     <div id="documents">
-        <div class="alert alert-dismissible fade" v-if="message != ''" :class="alertClass">
-            {% verbatim %}{{ message }}{% endverbatim %}
+        <div class="alert alert-dismissible fade" v-if="alertMessage != ''" :class="alertClass">
+            {% verbatim %}{{ alertMessage }}{% endverbatim %}
             <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
         <section id="card-caps">
             <div class="row" v-if="documents.length > 0">
-                <document inline-template v-for="document in documents"
+                <document inline-template v-for="(document, index) in documents"
                           :document="document"
+                          :key="index"
                 >
                     {% include 'document/_index.html.twig' %}
                 </document>
             </div>
             <div class="card" v-else>
                 <div class="card-header" id="headingFour" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" role="button">
-                    <span class="collapsed  collapse-title"> Aucun document trouvé </span>
+                    <span class="collapsed collapse-title">{% verbatim %}{{ message }}{% endverbatim %}</span>
                 </div>
             </div>
         </section>
         <input type="hidden" ref="path" value="{{ path }}">
+        <input type="hidden" ref="messages"
+               data-no-document-found="{{ 'app.no_document_found'|trans }}"
+               data-loading-in-progress="{{ 'app.loading_in_progress'|trans }}"
+        >
     </div>
 {% endblock %}
 
