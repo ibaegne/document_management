@@ -38,4 +38,5 @@ app:
   drop_files_here_to_upload: Déposez les fichiers ici pour les télécharger
   no_document_found: Aucun document trouvé
   loading_in_progress: chargement en cours...
+  file_is_to_big: "Le fichier est trop gros ({{filesize}}MiB). Taille maximale des fichiers : {{maxFilesize}}MiB."
 

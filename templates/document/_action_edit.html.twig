@@ -10,8 +10,7 @@
             </div>
             <div class="modal-body">
                 <h4 class="card-title">{% verbatim %}{{ document.name + '.' + document.extension }} {% endverbatim %}</h4>
-                <dropzone :dropzone-options="dropzoneOptions" ref="myVueDropzone" :deletefile="true" @send-add-file-success="closeModal">
-                </dropzone>
+                {% include 'common/_dropzone.html.twig' %}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" data-bs-dismiss="modal" @click="sendValueBtnEdit()">

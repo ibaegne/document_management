@@ -14,7 +14,7 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 
 export default {
   name: 'app',
-  props:['dropzoneOptions', 'deletefile', 'dictDefaultMessage'],
+  props:['dropzoneOptions', 'deletefile', 'dictDefaultMessage', 'dictFileTooBigMessage'],
   components: {
     vueDropzone: vue2Dropzone
   },
@@ -36,10 +36,11 @@ export default {
     },
     removeFile() {
       this.$refs.myVueDropzone.removeAllFiles();
-    }
+    },
   },
   created() {
     this.dropzoneOptions.dictDefaultMessage = this.dictDefaultMessage;
+    this.dropzoneOptions.dictFileTooBig = this.dictFileTooBigMessage;
   }
 }
 </script>

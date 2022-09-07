@@ -39,5 +39,6 @@ app:
   drop_files_here_to_upload: Drop files here to upload
   no_document_found: No document found
   loading_in_progress: loading in progress...
+  file_is_to_big: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB."
 
 
